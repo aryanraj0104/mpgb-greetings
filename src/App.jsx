@@ -22,14 +22,26 @@ const translateToHindi = async (text) => {
 }
 
 export default function App() {
+  const [authenticated, setAuthenticated] = useState(false);
+  const [passwordInput, setPasswordInput] = useState('');
   const [birthdays, setBirthdays] = useState([])
   const [todayBirthdays, setTodayBirthdays] = useState([])
+  const [password, setPassword] = useState('');
   const [selected, setSelected] = useState(null)
   const [loading, setLoading] = useState(true)
   const [fontSize, setFontSize] = useState(46)
   const [rndState, setRndState] = useState({ x: 200, y: 500, width: 400, height: 80 })
   const [editableName, setEditableName] = useState('')
   const cardRef = useRef(null)
+
+  useEffect(() => {
+    const cookie = document.cookie
+      .split('; ')
+      .find(row => row.startsWith('birthdayAuth='));
+    if (cookie && cookie.split('=')[1] === import.meta.env.VITE_BIRTHDAY_PASSWORD) {
+      setAuthenticated(true);
+    }
+  }, []);
 
   useEffect(() => {
     const loadExcel = async () => {
@@ -130,6 +142,38 @@ export default function App() {
       console.error(e)
       toast.error('Failed to render image — check console for CORS issues on template image')
     }
+  }
+
+  const handleLogin = () => {
+    if (passwordInput === import.meta.env.VITE_BIRTHDAY_PASSWORD) {
+      document.cookie = `birthdayAuth=${passwordInput}; path=/; max-age=${60*60*24}`; // 1 day
+      setAuthenticated(true);
+      toast.success('Welcome!');
+    } else {
+      toast.error('Wrong password!');
+    }
+  };
+
+  if (!authenticated) {
+    return (
+      <div className="app-root flex items-center justify-center" style={{ minHeight:'100vh' }}>
+        <Toaster />
+        <div className="panel" style={{ maxWidth:'320px', textAlign:'center' }}>
+          <h2>🔒 Enter Password</h2>
+          <input
+            type="password"
+            value={passwordInput}
+            onChange={(e) => setPasswordInput(e.target.value)}
+            className="controls-input"
+            placeholder="Password"
+            style={{ marginTop:'12px' }}
+          />
+          <button className="primary" style={{ marginTop:'12px', width:'100%' }} onClick={handleLogin}>
+            Enter
+          </button>
+        </div>
+      </div>
+    );
   }
 
   return (
