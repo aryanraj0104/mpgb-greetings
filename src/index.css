@@ -1,0 +1,269 @@
+:root {
+  --bg1: #0f172a; /* deep navy */
+  --card-bg: #ffffff;
+  --accent: #0b5ed7; /* darker blue */
+}
+
+* {
+  box-sizing: border-box;
+}
+
+body, html, #root {
+  height: 100%;
+  margin: 0;
+  font-family: 'Martel Sans', system-ui, -apple-system, 'Segoe UI', Roboto, 'Helvetica Neue', Arial;
+  background: #06223a;
+  color: #fff;
+}
+
+.app-root {
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+}
+
+.topbar {
+  padding: 20px;
+  text-align: center;
+}
+
+.topbar h1 {
+  margin: 0;
+  font-size: 2rem;
+}
+
+.topbar .sub {
+  font-size: 0.9rem;
+  opacity: 0.8;
+}
+
+.container {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 20px;
+  justify-content: center;
+  padding: 20px;
+}
+
+.panel {
+  background: rgba(255, 255, 255, 0.06);
+  backdrop-filter: blur(6px);
+  padding: 20px;
+  border-radius: 16px;
+  min-width: 280px;
+  max-width: 500px;
+}
+
+.panel h2 {
+  margin-top: 0;
+}
+
+.grid {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 12px;
+}
+
+.person {
+  background: rgba(255, 255, 255, 0.06);
+  padding: 12px;
+  border-radius: 12px;
+  min-width: 140px;
+  text-align: left;
+  color: white;
+  border: 1px solid rgba(255, 255, 255, 0.04);
+  cursor: pointer;
+}
+
+.person .name {
+  font-weight: 700;
+}
+
+.person .meta {
+  font-size: 0.9rem;
+  opacity: 0.8;
+}
+
+.muted {
+  color: rgba(255, 255, 255, 0.6);
+}
+
+.card-area {
+  display: flex;
+  gap: 20px;
+  align-items: flex-start;
+  flex-wrap: wrap;
+}
+
+.controls {
+  min-width: 220px;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.controls label {
+  font-size: 0.9rem;
+  color: rgba(255, 255, 255, 0.9);
+}
+
+
+.controls input[type='range'] {
+  width: 100%;
+  padding: 8px;
+  border-radius: 8px;
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  background: rgba(255, 255, 255, 0.03);
+  color: white;
+}
+
+.buttons {
+  display: flex;
+  gap: 10px;
+  margin-top: 8px;
+}
+
+button.primary {
+  background: var(--accent);
+  color: white;
+  padding: 10px 14px;
+  border-radius: 8px;
+  border: none;
+  cursor: pointer;
+}
+
+.preview {
+  flex: 1;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.card-frame {
+  position: relative;
+  width: 380px;
+  height: 520px;
+  border-radius: 14px;
+  overflow: visible;
+  box-shadow: 0 10px 30px rgba(2, 6, 23, 0.7);
+}
+
+.card-frame .template {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+}
+
+.greeting-text {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  color: white;
+  line-height: 1;
+}
+
+
+
+/* Responsive */
+@media (max-width: 900px) {
+  .container {
+    flex-direction: column;
+    align-items: stretch;
+  }
+  .card-frame {
+    width: 320px;
+    height: 440px;
+  }
+}
+/* Buttons */
+button.primary {
+  background: #1d5c96; /* deep blue */
+  color: #fff;
+  font-weight: 600;
+  padding: 10px 16px;
+  border-radius: 12px;
+  border: none;
+  cursor: pointer;
+  transition: all 0.2s ease;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);
+}
+
+button.primary:hover {
+  color: #fff;
+  background:#4BB548;
+  transform: translateY(-2px) scale(1.03);
+  box-shadow: 0 6px 12px rgba(0, 0, 0, 0.35);
+}
+
+button.primary:active {
+  transform: translateY(0) scale(0.98);
+  box-shadow: 0 3px 6px rgba(0, 0, 0, 0.3);
+}
+
+/* Secondary/Close buttons */
+button.secondary {
+  background: #fff;
+  color: #1d5c96;
+  font-weight: 600;
+  padding: 10px 16px;
+  border-radius: 12px;
+  border: 0;
+  cursor: pointer;
+  transition: all 0.2s ease;
+}
+
+button.secondary:hover {
+  background: red;
+  color: #fff;
+}
+
+
+/* Range sliders */
+input[type="range"] {
+  -webkit-appearance: none;
+  width: 100%;
+  height: 8px;
+  border-radius: 6px;
+  background: rgba(255, 255, 255, 0.2);
+  cursor: pointer;
+  transition: all 0.2s ease;
+}
+
+input[type="range"]::-webkit-slider-thumb {
+  -webkit-appearance: none;
+  width: 22px;
+  height: 22px;
+  border-radius: 50%;
+  background: #1d5c96;
+  border: 2px solid #fff;
+  box-shadow: 0 2px 6px rgba(0,0,0,0.3);
+  cursor: pointer;
+  transition: all 0.2s ease;
+}
+
+input[type="range"]::-webkit-slider-thumb:hover {
+  background: #174872;
+  transform: scale(1.1);
+}
+
+input[type="range"]::-moz-range-thumb {
+  width: 22px;
+  height: 22px;
+  border-radius: 50%;
+  background: #1d5c96;
+  border: 2px solid #fff;
+  cursor: pointer;
+  transition: all 0.2s ease;
+}
+
+input[type="range"]::-moz-range-thumb:hover {
+  background: #174872;
+  transform: scale(1.1);
+}
+
+/* Slider track hover effect */
+input[type="range"]:hover {
+  background: rgba(29, 92, 150, 0.4);
+}
