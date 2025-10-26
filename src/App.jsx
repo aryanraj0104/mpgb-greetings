@@ -122,8 +122,8 @@ export default function App() {
 
   useEffect(() => {
     if (selected) {
-      setEditableName(selected.hindiName || selected._enName || '')
-      setRndState({ x:80, y: 320, width: 250, height: 80 })
+      setEditableName("श्री "+selected.hindiName || "श्री "+selected._enName || '')
+      setRndState({ x:80, y: 250, width: 250, height: 80 })
       setFontSize(46)
     }
   }, [selected])
