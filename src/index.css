@@ -52,7 +52,18 @@ body, html, #root {
   border-radius: 16px;
   min-width: 280px;
   max-width: 500px;
+  max-height:fit-content;
 }
+.pass {
+  background: rgba(255, 255, 255, 0.06);
+  backdrop-filter: blur(6px);
+  padding: 20px;
+  border-radius: 16px;
+  margin: auto;
+  min-width: 280px;
+  max-width: 500px;
+}
+
 
 .panel h2 {
   margin-top: 0;
@@ -60,6 +71,7 @@ body, html, #root {
 
 .grid {
   display: flex;
+  /* flex-direction:column;   */
   flex-wrap: wrap;
   gap: 12px;
 }

@@ -154,19 +154,27 @@ export default function App() {
     }
   };
 
+  const handleKeyDown = (e) => {
+    if (e.key === "Enter"){
+      handleLogin()
+    }
+  }
+
   if (!authenticated) {
     return (
       <div className="app-root flex items-center justify-center" style={{ minHeight:'100vh' }}>
         <Toaster />
-        <div className="panel" style={{ maxWidth:'320px', textAlign:'center' }}>
+        <div className="pass" style={{ maxWidth:'320px', textAlign:'center' }}>
           <h2>🔒 Enter Password</h2>
           <input
             type="password"
             value={passwordInput}
             onChange={(e) => setPasswordInput(e.target.value)}
+            onKeyDown={handleKeyDown}
             className="controls-input"
             placeholder="Password"
             style={{ marginTop:'12px' }}
+            autoFocus
           />
           <button className="primary" style={{ marginTop:'12px', width:'100%' }} onClick={handleLogin}>
             Enter
